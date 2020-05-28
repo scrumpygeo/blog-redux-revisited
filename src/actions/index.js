@@ -6,6 +6,6 @@ const API_KEY = '?key=asdfsdf';
 // instead of the classic return {  type: 'FETCH_POSTS', payload: promise }
 export const fetchPosts = () => async (dispatch) => {
   const response = await reduxBlog.get(`posts/${API_KEY}`);
-  console.log(response);
+  //   console.log(response);
   dispatch({ type: 'FETCH_POSTS', payload: response.data });
 };
