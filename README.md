@@ -1,5 +1,7 @@
 ## React-Redux Blog
 
+1. Setup
+
 Using `http://reduxblog.herokuapp.com/api/posts` api for blogs which has these fields:
 
 ```
@@ -17,4 +19,19 @@ categories: "request, response",
 content: "Bu bir denemedir./This is just a test."
 },
 
+```
+
+2. Add Router
+
+   yarn add react-router-dom
+
+in App.js:
+
+import { Router, Route, Switch } from 'react-router-dom';
+
+```
+in src/history.js:
+
+import { createBrowserHistory } from 'history';
+export default createBrowserHistory();
 ```
