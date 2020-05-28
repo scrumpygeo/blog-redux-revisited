@@ -1,5 +1,6 @@
 import { combineReducers } from 'redux';
+import postsIndexReducer from './postsIndexReducer';
 
 export default combineReducers({
-  replaceMe: () => 10,
+  posts: postsIndexReducer,
 });
