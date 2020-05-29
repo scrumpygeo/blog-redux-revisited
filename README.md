@@ -37,3 +37,9 @@ export default createBrowserHistory();
 ```
 
 3. Add redux form
+
+yarn add redux-form
+
+return <input {...formProps.input} />;
+
+- means take all the formProps input properties and add them to the input element
