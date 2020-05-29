@@ -43,3 +43,31 @@ yarn add redux-form
 return <input {...formProps.input} />;
 
 - means take all the formProps input properties and add them to the input element
+
+4. wiring up connect and redux form:
+
+```
+start of with this:
+
+
+      export default reduxForm({
+         form: 'postCreate',
+         validate,
+      })(PostCreate);
+
+   we CAN wrap it as normal: export default connect()(reduxForm{  etc etc})
+
+   however this syntax is usually used: put reduxForm part in a var and wrap that:
+
+   like this to start:
+
+
+      const formWrapped =  reduxForm({
+      form: 'postCreate',
+      validate,
+      })(PostCreate);
+
+      export default connect(null, {createPost})(formWrapped)
+
+
+```

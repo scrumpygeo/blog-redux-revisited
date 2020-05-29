@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
+import { connect } from 'react-redux';
+import { createPost } from '../actions';
 
 class PostCreate extends Component {
   renderError({ error, touched }) {
@@ -22,9 +24,9 @@ class PostCreate extends Component {
     );
   };
 
-  onSubmit(formValues) {
-    console.log(formValues);
-  }
+  onSubmit = (formValues) => {
+    this.props.createPost(formValues);
+  };
 
   render() {
     return (
@@ -54,6 +56,11 @@ const validate = (formValues) => {
     errors.title = 'You must enter a title.';
   }
 
+  if (!formValues.category) {
+    // runs only if user doesn't enter a title
+    errors.category = 'You must enter a category.';
+  }
+
   if (!formValues.content) {
     errors.content = 'You must enter some content.';
   }
@@ -61,7 +68,9 @@ const validate = (formValues) => {
   return errors;
 };
 
-export default reduxForm({
+const formWrapped = reduxForm({
   form: 'postCreate',
   validate,
 })(PostCreate);
+
+export default connect(null, { createPost })(formWrapped);

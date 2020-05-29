@@ -15,7 +15,12 @@ class PostsIndex extends Component {
           <i className='large middle aligned icon user' />
           <div className='content'>
             <div className='description'>
-              <h2>{post.title}</h2>
+              <h2>
+                <strong>{post.title}</strong>
+              </h2>
+
+              <p>Category: {post.categories}</p>
+
               <p>{post.content}</p>
             </div>
           </div>
