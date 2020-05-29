@@ -35,3 +35,5 @@ in src/history.js:
 import { createBrowserHistory } from 'history';
 export default createBrowserHistory();
 ```
+
+3. Add redux form

@@ -9,3 +9,9 @@ export const fetchPosts = () => async (dispatch) => {
   //   console.log(response);
   dispatch({ type: 'FETCH_POSTS', payload: response.data });
 };
+
+export const fetchPost = (id) => async (dispatch) => {
+  const response = await reduxBlog.get(`/posts/${id}/${API_KEY}`);
+
+  dispatch({ type: 'FETCH_POST', payload: response.data });
+};
