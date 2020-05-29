@@ -71,3 +71,5 @@ start of with this:
 
 
 ```
+
+5.Create all our action creators at once since we know what we want given we are using restful conventions.
