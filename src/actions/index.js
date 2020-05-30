@@ -34,9 +34,10 @@ export const createPost = (formValues) => async (dispatch) => {
 };
 
 export const editPost = (id, formValues) => async (dispatch) => {
-  const response = await reduxBlog.put(`/posts/${id}`, formValues);
+  const response = await reduxBlog.patch(`/posts/${id}`, formValues);
 
   dispatch({ type: EDIT_POST, payload: response.data });
+  history.push('/');
 };
 
 export const deletePost = (id) => async (dispatch) => {

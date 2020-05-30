@@ -1,3 +1,4 @@
+import _ from 'lodash';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchPost, editPost } from '../actions';
@@ -8,7 +9,9 @@ class PostEdit extends Component {
     this.props.fetchPost(this.props.match.params.id);
   }
 
-  onSubmit = (formValues) => {};
+  onSubmit = (formValues) => {
+    this.props.editPost(this.props.match.params.id, formValues);
+  };
 
   render() {
     if (!this.props.post) {
@@ -18,7 +21,15 @@ class PostEdit extends Component {
     return (
       <div>
         <h3>Edit Post</h3>
-        <PostForm initialValues={this.props.post} onSubmit={this.onSubmit} />
+        <PostForm
+          initialValues={_.pick(
+            this.props.post,
+            'title',
+            'categories',
+            'content'
+          )}
+          onSubmit={this.onSubmit}
+        />
       </div>
     );
   }
