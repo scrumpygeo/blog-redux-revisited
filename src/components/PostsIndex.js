@@ -7,7 +7,21 @@ class PostsIndex extends Component {
     this.props.fetchPosts();
   }
 
+  renderAdmin(post) {
+    return (
+      <div className='right floated content'>
+        <button className='ui button primary'>Edit</button>
+        <button className='ui button negative'>Delete</button>
+      </div>
+    );
+  }
+
   renderList() {
+    // sort by id so latest at top of list
+    this.props.posts.sort(function (a, b) {
+      return b.id - a.id;
+    });
+
     return this.props.posts.map((post) => {
       return (
         // jsx
@@ -16,11 +30,11 @@ class PostsIndex extends Component {
           <div className='content'>
             <div className='description'>
               <h2>
+                {' '}
                 <strong>{post.title}</strong>
               </h2>
-
+              {this.renderAdmin(post)}
               <p>Category: {post.categories}</p>
-
               <p>{post.content}</p>
             </div>
           </div>
