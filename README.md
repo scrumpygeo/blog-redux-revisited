@@ -80,3 +80,8 @@ fetch_post, edit and create are identical wrt reducers.
 Delete and fetch_posts are a bit different:
 
 - install lodash
+  `use _omit to delete the object`
+
+For CREATE_POSTS, use lodash mapKeys which takes an array and returns an object
+
+`_mapKeys(posts, 'id') - take posts array and turn them into an object with key of 'id' property from array`
