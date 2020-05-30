@@ -11,7 +11,9 @@ class PostsIndex extends Component {
   renderAdmin = (post) => {
     return (
       <div className='right floated content'>
-        <button className='ui button primary'>Edit</button>
+        <Link to={`/posts/edit/${post.id}`} className='ui button primary'>
+          Edit
+        </Link>
         <button className='ui button negative'>Delete</button>
       </div>
     );
