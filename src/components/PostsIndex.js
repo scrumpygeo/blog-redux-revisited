@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { fetchPosts } from '../actions';
 
 class PostsIndex extends Component {
@@ -43,9 +44,24 @@ class PostsIndex extends Component {
     });
   }
 
+  renderCreate() {
+    return (
+      <div style={{ textAlign: 'right' }}>
+        <Link to='/posts/new' className='ui button primary'>
+          Create Post
+        </Link>
+      </div>
+    );
+  }
+
   render() {
-    // console.log(this.props);
-    return <div className='ui relaxed divided list'>{this.renderList()}</div>;
+    return (
+      <div>
+        <h2>Posts</h2>
+        <div className='ui celled list'>{this.renderList()}</div>
+        {this.renderCreate()}
+      </div>
+    );
   }
 }
 
