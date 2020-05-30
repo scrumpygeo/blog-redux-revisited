@@ -75,3 +75,8 @@ start of with this:
 5.Create all our action creators at once since we know what we want given we are using restful conventions.
 
 6. Reducers: rather than returning an array of post objects, this time we return an object containing key value pairs where key is id provided by api and object is the post. This makes updating easier - we wont have to map thru streams to find target; instead just {...x, y} it. Only wrinkle is with delete where we will have to use lodash to delete (instead of pop in an array).
+
+fetch_post, edit and create are identical wrt reducers.
+Delete and fetch_posts are a bit different:
+
+- install lodash

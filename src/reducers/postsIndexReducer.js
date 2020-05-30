@@ -1,3 +1,4 @@
+import _ from 'lodash';
 import {
   FETCH_POSTS,
   FETCH_POST,
@@ -14,6 +15,10 @@ export default (state = {}, action) => {
       return { ...state, [action.payload.id]: action.payload };
     case EDIT_POST:
       return { ...state, [action.payload.id]: action.payload };
+    case DELETE_POST:
+      // in this case action creator payload just IS the id not the whole object.
+      // also _omit creates a new object (ie doesn't change original object) so no nead for spread operator stuff
+      return _.omit(state, action.payload);
     default:
       return state;
   }
