@@ -36,7 +36,7 @@ class PostsIndex extends Component {
 }
 
 const mapStateToProps = (state) => {
-  return { posts: state.posts };
+  return { posts: Object.values(state.posts) }; // convert object to array so we can map thru
 };
 
 export default connect(mapStateToProps, { fetchPosts })(PostsIndex);
