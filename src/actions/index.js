@@ -1,4 +1,5 @@
 import reduxBlog from '../apis/reduxBlog';
+import history from '../history';
 import {
   FETCH_POSTS,
   CREATE_POST,
@@ -6,6 +7,8 @@ import {
   DELETE_POST,
   EDIT_POST,
 } from './types';
+
+// const API_KEY = '?key=asdfsdf';
 
 // NB: due to thunk we call the dispatch function manually with the action we want to dispatch.
 // instead of the classic return {  type: 'FETCH_POSTS', payload: promise }
@@ -22,9 +25,12 @@ export const fetchPost = (id) => async (dispatch) => {
 };
 
 export const createPost = (formValues) => async (dispatch) => {
-  const response = reduxBlog.post('/posts', formValues);
+  const response = await reduxBlog.post(`/posts`, formValues);
+  // console.log(response.data);
 
   dispatch({ type: CREATE_POST, payload: response.data });
+  // here do programmatic navigation to get user to root (index page):
+  history.push('/'); // navigate to this route
 };
 
 export const editPost = (id, formValues) => async (dispatch) => {
