@@ -5,6 +5,7 @@ import PostCreate from './PostCreate';
 import PostShow from './PostShow';
 import PostEdit from './PostEdit';
 import PostDelete from './PostDelete';
+import Header from './Header';
 
 import history from '../history';
 
@@ -13,6 +14,7 @@ const App = () => {
     <div className='ui container'>
       <Router history={history}>
         <div>
+          <Header />
           <Switch>
             <Route path='/' exact component={PostsIndex} />
             <Route path='/posts/new' exact component={PostCreate} />
