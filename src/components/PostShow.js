@@ -12,11 +12,13 @@ class PostsShow extends Component {
     }
 
     const { title, categories, content } = this.props.post;
+
     return (
-      <div>
-        <h1>{title}</h1>
-        <h5>{categories}</h5>
-        <p>{content}</p>
+      <div className='ui text container segment'>
+        <h1 className='ui huge header'>{title}</h1>
+
+        <h5>Category: {categories}</h5>
+        <p className='ui text segment'>{content}</p>
       </div>
     );
   }
