@@ -33,11 +33,10 @@ class PostsIndex extends Component {
         <div className='item' key={post.id}>
           <i className='large middle aligned icon user' />
           <div className='content'>
+            <Link to={`/posts/${post.id}`} className='header'>
+              {post.title}
+            </Link>
             <div className='description'>
-              <h2>
-                {' '}
-                <strong>{post.title}</strong>
-              </h2>
               {this.renderAdmin(post)}
               <p>Category: {post.categories}</p>
               <p>{post.content}</p>
