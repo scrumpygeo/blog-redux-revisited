@@ -1,8 +1,9 @@
 import React, { Fragment, Component } from 'react';
 import { connect } from 'react-redux';
 import Modal from '../components/Modal';
+import { Link } from 'react-router-dom';
 import history from '../history';
-import { fetchPost } from '../actions';
+import { fetchPost, deletePost } from '../actions';
 
 class PostDelete extends Component {
   componentDidMount() {
@@ -10,10 +11,18 @@ class PostDelete extends Component {
   }
 
   renderActions() {
+    const { id } = this.props.match.params;
     return (
       <Fragment>
-        <button className='ui button negative'>Delete</button>
-        <button className='ui button'>Cancel</button>
+        <button
+          onClick={() => this.props.deletePost(id)}
+          className='ui button negative'
+        >
+          Delete
+        </button>
+        <Link to='/' className='ui button'>
+          Cancel
+        </Link>
       </Fragment>
     );
   }
@@ -43,4 +52,4 @@ const mapStateToProps = (state, ownProps) => {
   return { post: state.posts[ownProps.match.params.id] };
 };
 
-export default connect(mapStateToProps, { fetchPost })(PostDelete);
+export default connect(mapStateToProps, { fetchPost, deletePost })(PostDelete);
